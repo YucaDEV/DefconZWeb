@@ -33,3 +33,27 @@ if (track && prev && next) {
 
   setSlide(0);
 }
+
+const mapOpenBtn = document.querySelector('[data-map-open]');
+const mapModal = document.querySelector('[data-map-modal]');
+const mapCloseEls = document.querySelectorAll('[data-map-close]');
+
+const openMapModal = () => {
+  if (!mapModal) return;
+  mapModal.classList.add('is-open');
+  mapModal.setAttribute('aria-hidden', 'false');
+};
+
+const closeMapModal = () => {
+  if (!mapModal) return;
+  mapModal.classList.remove('is-open');
+  mapModal.setAttribute('aria-hidden', 'true');
+};
+
+if (mapOpenBtn && mapModal) {
+  mapOpenBtn.addEventListener('click', openMapModal);
+  mapCloseEls.forEach((el) => el.addEventListener('click', closeMapModal));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMapModal();
+  });
+}
