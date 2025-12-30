@@ -42,12 +42,14 @@ const openMapModal = () => {
   if (!mapModal) return;
   mapModal.classList.add('is-open');
   mapModal.setAttribute('aria-hidden', 'false');
+  mapModal.removeAttribute('hidden');
 };
 
 const closeMapModal = () => {
   if (!mapModal) return;
   mapModal.classList.remove('is-open');
   mapModal.setAttribute('aria-hidden', 'true');
+  mapModal.setAttribute('hidden', '');
 };
 
 if (mapOpenBtn && mapModal) {
